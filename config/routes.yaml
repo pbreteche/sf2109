@@ -1,11 +1,3 @@
-hello:
-    path: /{name}
-    controller: App\Controller\DefaultController::hello
-    defaults: { name: à tous }
-
-article:
-    path: /blog/{id}
-    controller: App\Controller\DefaultController::article
-    requirements:
-        id: \d+ # le format ici est écrit en Regex
-    methods: [POST, GET, PUT]
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
