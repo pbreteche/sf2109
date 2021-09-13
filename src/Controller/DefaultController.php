@@ -55,7 +55,13 @@ class DefaultController extends AbstractController
             ->setExpires(new \DateTimeImmutable('tomorrow'))
         ;
 
-
+        // Raccourcis de fabrication de réponses:
+        $redirectResponse = $this->redirect('url de redirection', Response::HTTP_SEE_OTHER);
+        $jsonResponse = $this->json(['key' => 'data']);
+        // Erreur 404 et 403
+        // throw $this->createNotFoundException();
+        // throw $this->createAccessDeniedException();
+        // Erreur 500 par défaut sur toutes les autres exceptions
 
         return new Response('Article n°'.$id.' chargé.');
     }
