@@ -37,7 +37,25 @@ class DefaultController extends AbstractController
 
         // => Première règle: ne plus utiliser les superglobales !
 
+        // Manipulation de la réponse HTTP
+        // via l'écriture sur la sortie standard:
+        // commutateur fin de PHP (point interro + chevron)
+        // echo, print, print_r, var_dump, etc.
+        // ou manipulation des en-têtes de réponse
+        // header(), http_response_code()
+
         // charger un article depuis la base de données
+
+        $response = new Response();
+        $response
+            ->setContent('le corps de réponse')
+            ->headers->set('Content-type', 'text/html')
+        ;
+        $response
+            ->setExpires(new \DateTimeImmutable('tomorrow'))
+        ;
+
+
 
         return new Response('Article n°'.$id.' chargé.');
     }
