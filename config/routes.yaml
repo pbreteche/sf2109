@@ -1,7 +1,4 @@
-index:
-    path: /
-    controller: App\Controller\DefaultController::index
-
 hello:
     path: /{name}
     controller: App\Controller\DefaultController::hello
+    defaults: { name: à tous }
