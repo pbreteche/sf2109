@@ -17,4 +17,9 @@ class DefaultController extends AbstractController
             ]
         );
     }
+
+    public function hello(string $name): Response
+    {
+        return new Response('<h1>Bonjour '.$name.'!</h1>');
+    }
 }
