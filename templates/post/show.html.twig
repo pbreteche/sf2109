@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
+
+    <article class="post">
+        <h1>{{ post.title }}</h1>
+
+        <div class="body">
+            {{ post.body }}
+        </div>
+    </article>
+{% endblock %}
