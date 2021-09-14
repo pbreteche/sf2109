@@ -5,5 +5,10 @@
 {% block body %}
 <h1>Nouvelle publication</h1>
 
-{{ form(create_form) }}
+{{ form_start(create_form) }}
+    {{ form_errors(create_form) }}
+    {{ form_row(create_form.isPublished) }}
+    {{ form_rest(create_form) }}
+    <button>Créer</button>
+{{ form_end(create_form) }}
 {% endblock %}
