@@ -53,6 +53,7 @@ class PostController extends AbstractController
             $newPost->setCreatedAt(new \DateTimeImmutable());
             $manager->persist($newPost);
             $manager->flush();
+            $this->addFlash('success', 'La nouvelle publication a bien été insérée');
 
             return $this->redirectToRoute('app_post_show', ['id' => $newPost->getId()]);
         }
@@ -78,6 +79,7 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->flush();
+            $this->addFlash('success', 'La modification a bien été appliquée');
 
             return $this->redirectToRoute('app_post_show', ['id' => $post->getId()]);
         }
