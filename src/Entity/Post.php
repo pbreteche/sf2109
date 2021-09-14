@@ -38,6 +38,12 @@ class Post
      */
     private $isPublished = false;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Person::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $writtenBy;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,5 +96,17 @@ class Post
     public function prePersistCallback()
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function getWrittenBy(): ?Person
+    {
+        return $this->writtenBy;
+    }
+
+    public function setWrittenBy(?Person $writtenBy): self
+    {
+        $this->writtenBy = $writtenBy;
+
+        return $this;
     }
 }
