@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Suppression de {{ post.title }}</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>Confirmer la suppression</button>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block title %}Suppression de {{ post.title }}{% endblock %}
+
