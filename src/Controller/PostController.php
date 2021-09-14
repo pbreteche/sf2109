@@ -52,7 +52,6 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newPost->setCreatedAt(new \DateTimeImmutable());
             $manager->persist($newPost);
             $manager->flush();
             $this->addFlash('success', 'La nouvelle publication a bien été insérée');

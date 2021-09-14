@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Post
 {
@@ -71,13 +72,6 @@ class Post
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     public function getIsPublished(): ?bool
     {
         return $this->isPublished;
@@ -88,5 +82,13 @@ class Post
         $this->isPublished = $isPublished;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersistCallback()
+    {
+        $this->createdAt = new \DateTimeImmutable();
     }
 }
