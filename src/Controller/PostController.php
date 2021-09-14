@@ -38,7 +38,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/new", methods={"GET", "POST"})
+     * @Route("/new", methods="POST")
      */
     public function create(
         Request $request,
@@ -64,7 +64,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", requirements={"id": "\d+"}, methods={"GET", "PUT"})
+     * @Route("/edit/{id}", requirements={"id": "\d+"}, methods="PUT")
      */
     public function edit(
         Post $post,
