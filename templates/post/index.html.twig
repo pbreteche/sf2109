@@ -5,7 +5,7 @@
 {% block body %}
 <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
 
-<ul>
+<ul class="post-list">
     {% for post in posts %}
         <li>{{ loop.index }}<a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title | slice(0, 50) }}</a></li>
         {% else %}
