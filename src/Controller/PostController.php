@@ -30,4 +30,15 @@ class PostController extends AbstractController
             'post' => $post,
         ]);
     }
+
+    /**
+     * @Route("/new", methods={"GET", "POST"})
+     */
+    public function create(): Response
+    {
+
+        return $this->render('post/create.html.twig', [
+
+        ]);
+    }
 }
