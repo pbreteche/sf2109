@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% dump 'tag twig' %}
+
+{% block body %}
+<article class="post">
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ dump('fonction dump') }}</p>
+
+    <div class="body">
+        {{ post.body }}
+    </div>
+</article>
+{% endblock %}
