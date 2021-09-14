@@ -5,10 +5,5 @@
 {% block body %}
 <h1>Nouvelle publication</h1>
 
-{{ form_start(create_form) }}
-    {{ form_errors(create_form) }}
-    {{ form_row(create_form.isPublished) }}
-    {{ form_rest(create_form) }}
-    <button>Créer</button>
-{{ form_end(create_form) }}
+    {{ include('post/_form.html.twig', {button_text: 'créer', form: create_form}) }}
 {% endblock %}

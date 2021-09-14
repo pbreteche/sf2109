@@ -5,10 +5,5 @@
 {% block body %}
     <h1>Édition de «{{ post.title }}»</h1>
 
-    {{ form_start(edit_form) }}
-    {{ form_errors(edit_form) }}
-    {{ form_row(edit_form.isPublished) }}
-    {{ form_rest(edit_form) }}
-    <button>Modifier</button>
-    {{ form_end(edit_form) }}
+{{ include('post/_form.html.twig', {button_text: 'modifier', form: edit_form}) }}
 {% endblock %}
