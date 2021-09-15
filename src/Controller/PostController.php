@@ -33,6 +33,10 @@ class PostController extends AbstractController
 
         dump($this->generateUrl('app_post_index', ['id' => 1], UrlGeneratorInterface::ABSOLUTE_URL));
 
+        // Menu généré par une sous-requête
+        // déclenché ici directement dans le contrôleur
+        $menuResponse = $this->forward(NavController::class.'::menu');
+
         return $this->render('post/index.html.twig', [
             'person' => $person,
             'posts' => $repository->findBy(['writtenBy' => $person], ['createdAt' => 'DESC']),

@@ -6,6 +6,10 @@
 <h1>Publication de {{ person.fullName }}</h1>
 <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
 
+{{ render(controller('App\\Controller\\NavController::menu')) }}
+{{ render_esi(controller('App\\Controller\\NavController::menu')) }}
+{{ render_hinclude(controller('App\\Controller\\NavController::menu')) }}
+
 <ul class="post-list">
     {% for post in posts %}
         <li>{{ loop.index }}<a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title | slice(0, 50) }}</a></li>
