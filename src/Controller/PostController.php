@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Demo\RepositoryDemo;
-use App\Entity\Person;
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,7 +27,7 @@ class PostController extends AbstractController
     public function index(
         PostRepository $repository,
         RepositoryDemo $repositoryDemo,
-        Person $person
+        User $person
     ): Response {
         $repositoryDemo->demo();
 
