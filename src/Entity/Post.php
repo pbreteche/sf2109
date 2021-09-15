@@ -47,7 +47,7 @@ class Post
     private $isPublished = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Person::class, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity=User::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $writtenBy;
@@ -98,12 +98,12 @@ class Post
         return $this;
     }
 
-    public function getWrittenBy(): ?Person
+    public function getWrittenBy(): ?User
     {
         return $this->writtenBy;
     }
 
-    public function setWrittenBy(?Person $writtenBy): self
+    public function setWrittenBy(?User $writtenBy): self
     {
         $this->writtenBy = $writtenBy;
 

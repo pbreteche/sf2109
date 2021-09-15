@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Person;
-use App\Form\PersonType;
+use App\Entity\User;
+use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/person", methods="GET")
+ * @Route("/user", methods="GET")
  */
-class PersonController extends AbstractController
+class UserController extends AbstractController
 {
     /**
      * @Route("/new", methods="POST")
@@ -22,8 +22,8 @@ class PersonController extends AbstractController
         Request $request,
         EntityManagerInterface $manager
     ): Response {
-        $newPerson = new Person();
-        $form = $this->createForm(PersonType::class, $newPerson);
+        $newPerson = new User();
+        $form = $this->createForm(UserType::class, $newPerson);
 
         $form->handleRequest($request);
 
@@ -32,10 +32,10 @@ class PersonController extends AbstractController
             $manager->flush();
             $this->addFlash('success', 'La nouvelle personne a bien été insérée');
 
-            return $this->redirectToRoute('app_person_create');
+            return $this->redirectToRoute('app_user_create');
         }
 
-        return $this->render('person/create.html.twig', [
+        return $this->render('user/create.html.twig', [
             'create_form' => $form->createView(),
         ]);
     }

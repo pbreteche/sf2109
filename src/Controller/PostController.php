@@ -38,7 +38,7 @@ class PostController extends AbstractController
         $menuResponse = $this->forward(NavController::class.'::menu');
 
         return $this->render('post/index.html.twig', [
-            'person' => $person,
+            'user' => $person,
             'posts' => $repository->findBy(['writtenBy' => $person], ['createdAt' => 'DESC']),
         ]);
     }
