@@ -26,6 +26,7 @@ class PostController extends AbstractController
         PostRepository $repository,
         Person $person
     ): Response {
+        dump($repository->findByMonth(new \DateTimeImmutable()));
 
         return $this->render('post/index.html.twig', [
             'person' => $person,
