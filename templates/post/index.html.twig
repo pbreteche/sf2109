@@ -3,6 +3,7 @@
 {% block title %}Liste des publications{% endblock %}
 
 {% block body %}
+<h1>Publication de {{ person.fullName }}</h1>
 <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
 
 <ul class="post-list">

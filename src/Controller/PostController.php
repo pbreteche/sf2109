@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Person;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
@@ -19,13 +20,16 @@ use Symfony\Component\Validator\Constraints\EqualTo;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/written-by/{id}", defaults={"id": 1})
      */
     public function index(
-        PostRepository $repository
+        PostRepository $repository,
+        Person $person
     ): Response {
+
         return $this->render('post/index.html.twig', [
-            'posts' => $repository->findAll(),
+            'person' => $person,
+            'posts' => $repository->findBy(['writtenBy' => $person], ['createdAt' => 'DESC']),
         ]);
     }
 
