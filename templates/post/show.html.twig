@@ -4,6 +4,15 @@
 
 {% block body %}
     <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
+    {# un commentaire en twig #}
+
+    {% set xss_text = '<script>console.log("XSS")</script>' %}
+    <p>{{ xss_text }} via une variable</p>
+    <p>{{ '<script>console.log("XSS")</script>' | escape }} via un littéral</p>
+
+    {% autoescape false %}
+    <p>Ici, l'échapement auto est temporairement désactivé (attention au XSS)</p>
+    {% endautoescape %}
 
     <article class="post">
         <h1>{{ post.title | upper }}</h1>
