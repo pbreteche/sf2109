@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use App\Validator\Demo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -23,6 +24,7 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Demo()
      */
     private $title;
 
@@ -119,7 +121,7 @@ class Post
     /**
      * @Assert\IsTrue(message="Body must have more chars than title")
      */
-    public function bodyIsLargerThanTitle(): bool
+    public function isBodyLargerThanTitle(): bool
     {
         return mb_strlen($this->body) > mb_strlen($this->title);
     }
@@ -127,7 +129,7 @@ class Post
     /**
      * @Assert\Callback()
      */
-    public function bodyIsLargerThanTitle2(ExecutionContextInterface $context, $payload)
+    public function isBodyLargerThanTitle2(ExecutionContextInterface $context, $payload)
     {
         if (mb_strlen($this->body) > mb_strlen($this->title)) {
             return;
