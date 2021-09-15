@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle personne{% endblock %}
+
+{% block body %}
+<h1>Nouvelle personne</h1>
+
+{{ include('person/_form.html.twig', {button_text: 'créer', form: create_form}) }}
+{% endblock %}
