@@ -34,6 +34,7 @@ class Post
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Assert\LessThan(value="today", groups="publish")
      */
     private $createdAt;
 

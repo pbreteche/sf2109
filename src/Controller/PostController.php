@@ -61,7 +61,10 @@ class PostController extends AbstractController
         EntityManagerInterface $manager
     ): Response {
         $newPost = new Post();
-        $form = $this->createForm(PostType::class, $newPost);
+        $form = $this->createForm(PostType::class, $newPost, [
+            // teste les contraintes "Default" de l'objet post, mais pas celles de l'objet Person
+            'validation_groups' => 'Post',
+        ]);
 
         $form->handleRequest($request);
 

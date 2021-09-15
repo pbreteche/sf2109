@@ -31,5 +31,8 @@ class RepositoryDemo
         dump($this->validator->validate((new Post())->setTitle('bonjour')));
         dump($this->validator->validate((new Post())->setTitle('bonjour')->setBody('blablabla')));
         dump($this->validator->validate((new Post())->setTitle('bonjour')->setBody(' blablabla blablabla blablabla')));
+
+        // tester un groupe de validation spécifique
+        dump($this->validator->validate((new Post())->setTitle('bonjour'), null, 'publish'));
     }
 }
