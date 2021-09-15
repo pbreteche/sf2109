@@ -7,7 +7,7 @@
 
     <article class="post">
         <h1>{{ post.title | upper }}</h1>
-        <p>Publié le {{ post.createdAt | date('d/m/Y') }}</p>
+        <p>Publié le {{ post.createdAt | date('d/m/Y') }} par {{ post.writtenBy.firstName }}</p>
 
         <div class="body">
             {{ post.body }}

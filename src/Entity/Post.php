@@ -39,7 +39,7 @@ class Post
     private $isPublished = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Person::class)
+     * @ORM\ManyToOne(targetEntity=Person::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $writtenBy;
@@ -90,14 +90,6 @@ class Post
         return $this;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersistCallback()
-    {
-        $this->createdAt = new \DateTimeImmutable();
-    }
-
     public function getWrittenBy(): ?Person
     {
         return $this->writtenBy;
@@ -108,5 +100,13 @@ class Post
         $this->writtenBy = $writtenBy;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersistCallback()
+    {
+        $this->createdAt = new \DateTimeImmutable();
     }
 }
