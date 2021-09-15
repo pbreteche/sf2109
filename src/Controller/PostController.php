@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Demo\RepositoryDemo;
 use App\Entity\Person;
 use App\Entity\Post;
 use App\Form\PostType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Constraints\EqualTo;
 
 /**
@@ -24,10 +26,12 @@ class PostController extends AbstractController
      */
     public function index(
         PostRepository $repository,
+        RepositoryDemo $repositoryDemo,
         Person $person
     ): Response {
-        dump($repository->findByMonth(new \DateTimeImmutable()));
-        dump($repository->findByMonth2(new \DateTimeImmutable()));
+        $repositoryDemo->demo();
+
+        dump($this->generateUrl('app_post_index', ['id' => 1], UrlGeneratorInterface::ABSOLUTE_URL));
 
         return $this->render('post/index.html.twig', [
             'person' => $person,
