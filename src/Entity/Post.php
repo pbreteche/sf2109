@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -113,5 +114,28 @@ class Post
     public function prePersistCallback()
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    /**
+     * @Assert\IsTrue(message="Body must have more chars than title")
+     */
+    public function bodyIsLargerThanTitle(): bool
+    {
+        return mb_strlen($this->body) > mb_strlen($this->title);
+    }
+
+    /**
+     * @Assert\Callback()
+     */
+    public function bodyIsLargerThanTitle2(ExecutionContextInterface $context, $payload)
+    {
+        if (mb_strlen($this->body) > mb_strlen($this->title)) {
+            return;
+        }
+
+        $context->buildViolation('Body must have more chars than title')
+            ->atPath('body')
+            ->addViolation()
+        ;
     }
 }
