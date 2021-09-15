@@ -28,7 +28,8 @@ class PostRepository extends ServiceEntityRepository
         $end = $start->modify('+1 month');
 
         return $this->getEntityManager()->createQuery(
-            'SELECT post FROM '.Post::class.' post'.
+            'SELECT post, author FROM '.Post::class.' post'.
+            ' INNER JOIN post.writtenBy author'.
             ' WHERE post.createdAt >= :start'.
             ' AND post.createdAt < :end'.
             ' ORDER BY post.createdAt DESC'
