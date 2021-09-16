@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des publications{% endblock %}
+{% block title %}{{ 'post.index.page_title' | trans }}{% endblock %}
 
 {% block body %}
-<h1>Publication de {{ user.fullName }}</h1>
+<h1>{{ 'post.index.heading' | trans({'%name%': user.fullName}) }}</h1>
 <div class="menu"><a href="{{ path('app_admin_post_create') }}">Ajouter</a></div>
 
 {% if is_granted('ROLE_ADMIN')%}
-<p>Vous avez le rôle admin</p>
+<p>{{ 'website.security.role_admin' | trans }}</p>
 {% endif %}
 
 {{ render(controller('App\\Controller\\NavController::menu')) }}
@@ -18,7 +18,7 @@
     {% for post in posts %}
         <li>{{ loop.index }}<a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title | slice(0, 50) }}</a></li>
         {% else %}
-        <li>Pas de publication, en <a href="{{ path('app_admin_post_create') }}">créer</a> une</li>
+        <li>{{ 'post.index.none.prefix' | trans }}<a href="{{ path('app_admin_post_create') }}">{{ 'post.index.none.link' | trans }}</a>{{ 'post.index.none.suffix' | trans }}</li>
     {% endfor %}
 </ul>
 {% endblock %}

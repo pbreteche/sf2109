@@ -1,6 +1,11 @@
-# Stratégie
-# 1 langue principale = anglais (exemple)
-Welcome to my website: Bienvenue sur mon site web
+website:
+  global:
+    welcome: Bienvenue sur mon site web
+  security:
+    role_admin: 'Vous avez le rôle admin'
 
-# clé sémantique
-website.global.welcome: Bienvenue sur mon site web
+post:
+  index:
+    page_title: 'Liste des publications'
+    heading: 'Publications de %name%'
+    none: { prefix: 'Pas de publication, en ', link: créer, suffix: ' une'}
