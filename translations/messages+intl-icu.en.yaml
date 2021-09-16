@@ -1,6 +1,7 @@
 website:
   global:
     welcome: Welcome to my website
+    select: Select
   security:
     role_admin: 'You are admin'
   demo:

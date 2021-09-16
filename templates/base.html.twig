@@ -17,6 +17,12 @@
         {% endblock %}
     </head>
     <body>
+    {% block nav_bar %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {{ render(controller('App\\Controller\\MenuBarController::menuBar')) }}
+        {% endif %}
+    {% endblock %}
+
     {# read and display all flash messages #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
