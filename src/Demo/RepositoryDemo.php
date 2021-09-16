@@ -6,21 +6,25 @@ use App\Entity\Post;
 use App\Repository\PostRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RepositoryDemo
 {
     private $postRepository;
     private $urlGenerator;
     private $validator;
+    private $translator;
 
     public function __construct(
         PostRepository $postRepository,
         UrlGeneratorInterface $urlGenerator,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        TranslatorInterface $translator
     ) {
         $this->postRepository = $postRepository;
         $this->urlGenerator = $urlGenerator;
         $this->validator = $validator;
+        $this->translator = $translator;
     }
 
     public function demo()
@@ -34,5 +38,7 @@ class RepositoryDemo
 
         // tester un groupe de validation spécifique
         dump($this->validator->validate((new Post())->setTitle('bonjour!'), null, 'publish'));
+
+        dump($this->translator->trans('website.global.welcome'));
     }
 }
