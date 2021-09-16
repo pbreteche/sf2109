@@ -1,0 +1,2 @@
+demo: La chaine "{{ value }}" doit posséder un nombre pair de caractères.
+body_larger_title: Le corps de la publication doit être plus volumineux que le titre

@@ -119,7 +119,7 @@ class Post
     }
 
     /**
-     * @Assert\IsTrue(message="Body must have more chars than title")
+     * @Assert\IsTrue(message="body_larger_title")
      */
     public function isBodyLargerThanTitle(): bool
     {
@@ -135,7 +135,7 @@ class Post
             return;
         }
 
-        $context->buildViolation('Body must have more chars than title')
+        $context->buildViolation('body_larger_title')
             ->atPath('body')
             ->addViolation()
         ;
