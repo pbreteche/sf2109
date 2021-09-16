@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Post;
 use App\Form\PostType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,7 @@ use Symfony\Component\Validator\Constraints\EqualTo;
 
 /**
  * @Route("/post", methods="GET")
+ * @IsGranted("ROLE_ADMIN")
  */
 class PostController extends AbstractController
 {
