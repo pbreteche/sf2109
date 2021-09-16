@@ -7,5 +7,10 @@ website:
 post:
   index:
     page_title: 'Liste des publications'
-    heading: 'Publications de {name}'
+    heading: >-
+      { posts, plural,
+        =0 {Aucune publication de {name}}
+        =1 {La publication de {name}}
+        other {Publications de {name}}
+      }
     none: { prefix: 'Pas de publication, en ', link: créer, suffix: ' une'}

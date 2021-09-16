@@ -3,7 +3,7 @@
 {% block title %}{{ 'post.index.page_title' | trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'post.index.heading' | trans({'name': user.fullName}) }}</h1>
+<h1>{{ 'post.index.heading' | trans({'name': user.fullName, 'posts': posts | length}) }}</h1>
 <div class="menu"><a href="{{ path('app_admin_post_create') }}">Ajouter</a></div>
 
 {% if is_granted('ROLE_ADMIN')%}
