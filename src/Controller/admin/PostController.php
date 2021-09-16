@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Post;
 use App\Form\PostType;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,13 +26,22 @@ class PostController extends AbstractController
      */
     public function create(
         Request $request,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        LoggerInterface $logger
     ): Response {
         $newPost = new Post();
         $form = $this->createForm(PostType::class, $newPost, [
             // teste les contraintes "Default" de l'objet post, mais pas celles de l'objet Person
             'validation_groups' => 'Post',
         ]);
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $logger->debug('accès refusé pour '.$this->getUser()->getFullName());
+            throw $this->createAccessDeniedException();
+        }
+
 
         $form->handleRequest($request);
 

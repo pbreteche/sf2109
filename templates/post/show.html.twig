@@ -3,7 +3,7 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
-    <div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
+    <div class="menu"><a href="{{ path('app_admin_post_create') }}">Ajouter</a></div>
     {# un commentaire en twig #}
 
     {% set xss_text = '<script>console.log("XSS")</script>' %}

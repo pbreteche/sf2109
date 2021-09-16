@@ -4,7 +4,7 @@
 
 {% block body %}
 <h1>Publication de {{ person.fullName }}</h1>
-<div class="menu"><a href="{{ path('app_post_create') }}">Ajouter</a></div>
+<div class="menu"><a href="{{ path('app_admin_post_create') }}">Ajouter</a></div>
 
 {{ render(controller('App\\Controller\\NavController::menu')) }}
 {{ render_esi(controller('App\\Controller\\NavController::menu')) }}
@@ -14,7 +14,7 @@
     {% for post in posts %}
         <li>{{ loop.index }}<a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title | slice(0, 50) }}</a></li>
         {% else %}
-        <li>Pas de publication, en <a href="{{ path('app_post_create') }}">créer</a> une</li>
+        <li>Pas de publication, en <a href="{{ path('app_admin_post_create') }}">créer</a> une</li>
     {% endfor %}
 </ul>
 {% endblock %}

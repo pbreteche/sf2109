@@ -27,7 +27,7 @@ class RepositoryDemo
     {
         dump($this->postRepository->findByMonth(new \DateTimeImmutable()));
         dump($this->postRepository->findByMonth2(new \DateTimeImmutable()));
-        dump($this->urlGenerator->generate('app_post_create'));
+        dump($this->urlGenerator->generate('app_admin_post_create'));
         dump($this->validator->validate((new Post())->setTitle('bonjour!')));
         dump($this->validator->validate((new Post())->setTitle('bonjour')->setBody('blablabla')));
         dump($this->validator->validate((new Post())->setTitle('bonjour')->setBody(' blablabla blablabla blablabla')));
