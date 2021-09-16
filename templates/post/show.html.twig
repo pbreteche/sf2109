@@ -19,6 +19,7 @@
     <article class="post">
         <h1>{{ post.title | upper }}</h1>
         <p>Publié le {{ post.createdAt | date('d/m/Y') }} par {{ post.writtenBy.firstName }}</p>
+        <p>{{ 'post.show.authoring' | trans({name: post.writtenBy.firstName, created_at: post.createdAt}) }}</p>
 
         <div class="body">
             {{ post.body }}

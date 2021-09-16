@@ -21,3 +21,5 @@ post:
         other {Publications de {name}}
       }
     none: { prefix: 'Pas de publication, en ', link: créer, suffix: ' une'}
+  show:
+    authoring: Publié le {created_at, date, long} par {name}

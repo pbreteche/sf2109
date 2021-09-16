@@ -1,0 +1,25 @@
+website:
+  global:
+    welcome: Welcome to my website
+  security:
+    role_admin: 'You are admin'
+  demo:
+    select: >-
+      { color, select,
+        red {First choice with red color}
+        green {Second choice with green color}
+        other {Another choice with {color} color}
+      }
+
+post:
+  index:
+    page_title: 'Post list'
+    heading: >-
+      { posts, plural,
+        =0 {No post by {name}}
+        =1 {The post by {name}}
+        other {Posts by {name}}
+      }
+    none: { prefix: 'No post, ', link: create, suffix: ' one'}
+  show:
+    authoring: Publish at {created_at, date, long} by {name}
