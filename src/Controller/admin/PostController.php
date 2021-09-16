@@ -59,6 +59,7 @@ class PostController extends AbstractController
 
     /**
      * @Route("/edit/{id}", requirements={"id": "\d+"}, methods="PUT")
+     * @IsGranted("POST_EDIT", subject="post")
      */
     public function edit(
         Post $post,
