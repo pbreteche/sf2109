@@ -3,8 +3,12 @@
 {% block title %}Liste des publications{% endblock %}
 
 {% block body %}
-<h1>Publication de {{ person.fullName }}</h1>
+<h1>Publication de {{ user.fullName }}</h1>
 <div class="menu"><a href="{{ path('app_admin_post_create') }}">Ajouter</a></div>
+
+{% if is_granted('ROLE_ADMIN')%}
+<p>Vous avez le rôle admin</p>
+{% endif %}
 
 {{ render(controller('App\\Controller\\NavController::menu')) }}
 {{ render_esi(controller('App\\Controller\\NavController::menu')) }}

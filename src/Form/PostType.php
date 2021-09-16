@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Person;
+use App\Entity\User;
 use App\Entity\Post;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -18,7 +18,7 @@ class PostType extends AbstractType
             ->add('body')
             ->add('isPublished')
             ->add('writtenBy', EntityType::class, [
-                'class' => Person::class,
+                'class' => User::class,
                 'choice_label' => 'fullName'
             ])
         ;

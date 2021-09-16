@@ -20,7 +20,6 @@ use Symfony\Component\Validator\Constraints\EqualTo;
  */
 class PostController extends AbstractController
 {
-
     /**
      * @Route("/new", methods="POST")
      */
