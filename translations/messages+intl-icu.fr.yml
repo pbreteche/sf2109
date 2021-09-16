@@ -3,6 +3,13 @@ website:
     welcome: Bienvenue sur mon site web
   security:
     role_admin: 'Vous avez le rôle admin'
+  demo:
+    select: >-
+      { color, select,
+        red {Le premier choix avec couleur rouge}
+        green {Le deuxième choix avec couleur verte}
+        other {Un autre choix avec la couleur {color}}
+      }
 
 post:
   index:

@@ -14,6 +14,8 @@
 {{ render_esi(controller('App\\Controller\\NavController::menu')) }}
 {{ render_hinclude(controller('App\\Controller\\NavController::menu')) }}
 
+<p>Démo select ICU: {{ 'website.demo.select' | trans({color: 'blue'}) }}</p>
+
 <ul class="post-list">
     {% for post in posts %}
         <li>{{ loop.index }}<a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title | slice(0, 50) }}</a></li>
