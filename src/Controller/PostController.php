@@ -9,6 +9,7 @@ use App\Repository\PostRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\EventListener\AbstractSessionListener;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -51,9 +52,20 @@ class PostController extends AbstractController
      */
     public function show(Post $post): Response
     {
-        return $this->render('post/show.html.twig', [
+        $response = $this->render('post/show.html.twig', [
             'post' => $post,
         ]);
+
+        // Symfony désactive la gestion du cache dès qu'une session est démarrée.
+        // Désactive la gestion auto des en-têtes de cache par Symfony :
+        $response->headers->set(AbstractSessionListener::NO_AUTO_CACHE_CONTROL_HEADER, 'true');
+
+        $response->headers->set('Expires', (new \DateTimeImmutable('+2 hour'))->format('c'));
+        $response->setExpires(new \DateTimeImmutable('+3 hour'));
+        $response->setPublic();
+        $response->headers->addCacheControlDirective('no-store');
+
+        return $response;
     }
 
 }
