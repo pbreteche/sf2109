@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Repository\PostRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\EventListener\AbstractSessionListener;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,11 +54,19 @@ class PostController extends AbstractController
      *     lastModified="post.getCreatedAt()"
      * )
      */
-    public function show(Post $post): Response
+    public function show(Post $post, Request $request): Response
     {
-        $response = $this->render('post/show.html.twig', [
+        $response = new Response();
+
+        $response->setLastModified($post->getCreatedAt());
+
+        if ($response->isNotModified($request)) {
+            return $response; // envoi de la réponse 304 Not modified
+        }
+
+        $response->setContent($this->renderView('post/show.html.twig', [
             'post' => $post,
-        ]);
+        ]));
 
         // Symfony désactive la gestion du cache dès qu'une session est démarrée.
         // Désactive la gestion auto des en-têtes de cache par Symfony :
