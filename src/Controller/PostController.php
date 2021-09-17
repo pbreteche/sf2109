@@ -6,6 +6,7 @@ use App\Demo\RepositoryDemo;
 use App\Entity\Post;
 use App\Entity\User;
 use App\Repository\PostRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,6 +47,7 @@ class PostController extends AbstractController
 
     /**
      * @Route("/show/{id}", requirements={"id": "\d+"})
+     * @Cache(expires="+1 hour", maxage="3600", public=true)
      */
     public function show(Post $post): Response
     {
