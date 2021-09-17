@@ -2,6 +2,7 @@ website:
   global:
     welcome: Bienvenue sur mon site web
     select: Sélectionner
+    locale: Langue
   security:
     role_admin: 'Vous avez le rôle admin'
   demo:

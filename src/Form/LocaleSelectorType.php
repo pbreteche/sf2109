@@ -16,6 +16,7 @@ class LocaleSelectorType extends AbstractType
             ->add('locale', LocaleType::class, [
                 'choice_loader' => null,
                 'choices' => ['Français' => 'fr', 'Anglais' => 'en'],
+                'label' => 'website.global.locale',
             ])
             ->add('targetPath', HiddenType::class, [
                 'data' => $options['target'],
