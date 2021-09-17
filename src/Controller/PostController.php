@@ -12,7 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @Route("/post", methods="GET")
+ * Autre manière de sélectionner la locale par rapport au chemin.
+ * En conflit avec nos souscripteurs.
+ *
+ * @Route({
+ *     "en": "/post",
+ *     "fr": "/publi"
+ * }, methods="GET")
  */
 class PostController extends AbstractController
 {
