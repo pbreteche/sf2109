@@ -59,7 +59,9 @@ class PostController extends AbstractController
         $response = new Response();
 
         $response->setLastModified($post->getCreatedAt());
+        $response->setEtag(sha1($post->getBody()));
 
+        // isNotModified fonctionne aussi bien LastModified que pour Etag
         if ($response->isNotModified($request)) {
             return $response; // envoi de la réponse 304 Not modified
         }
