@@ -2,11 +2,11 @@
 
 namespace App\Demo;
 
-class Calculator
+class Calculator implements CalculatorInterface
 {
     private $inc = 0;
 
-    public function add(int $a, int $b)
+    public function add(int $a, int $b): int
     {
         // Ici, c'est stateless
         // le résultat est toujours le même,

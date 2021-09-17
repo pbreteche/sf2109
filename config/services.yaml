@@ -24,3 +24,15 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Demo\Calculator:
+        class: App\Demo\Calculator
+        abstract: false
+        arguments: [] # paramètres au constructeur
+        public: false # les services avec public "true" sont dépréciés
+        tags: {} # nom des tags suivant type spécifique de service
+
+    App\Demo\CalculatorInterface:
+        alias: App\Demo\Calculator # alias référencie un identifiant de service existant
+        # en utilisant l'alias, on récupère l'ensemble de la config de service
+        # s'il n'existe qu'une seule classe de service qui implémente l'interface
+        # l'alias est également automatiquement déclaré
