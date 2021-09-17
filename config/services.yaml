@@ -12,6 +12,12 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+        # Liaison des dépendances par le nom
+        bind:
+            $primitiveDependency: 'une valeur de type primitif'
+            $siteName: '%site_name%'
+            $calculator: '@App\Demo\Calculator'
+
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -36,3 +42,7 @@ services:
         # en utilisant l'alias, on récupère l'ensemble de la config de service
         # s'il n'existe qu'une seule classe de service qui implémente l'interface
         # l'alias est également automatiquement déclaré
+
+    # au cas par cas, possibilité de définir les dépendances de type primitif
+    App\Demo\RepositoryDemo:
+        arguments: { $primitiveDependency: 'une dépendance de type primitif'}

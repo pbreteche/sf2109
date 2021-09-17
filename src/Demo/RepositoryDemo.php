@@ -14,8 +14,10 @@ class RepositoryDemo
     private $urlGenerator;
     private $validator;
     private $translator;
+    private $primitiveDependency;
 
     public function __construct(
+        string $primitiveDependency,
         PostRepository $postRepository,
         UrlGeneratorInterface $urlGenerator,
         ValidatorInterface $validator,
@@ -25,6 +27,7 @@ class RepositoryDemo
         $this->urlGenerator = $urlGenerator;
         $this->validator = $validator;
         $this->translator = $translator;
+        $this->primitiveDependency = $primitiveDependency;
     }
 
     public function demo()
