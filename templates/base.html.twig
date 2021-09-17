@@ -16,7 +16,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="container-xxl">
     {% block nav_bar %}
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         {{ render(controller('App\\Controller\\MenuBarController::menuBar')) }}
