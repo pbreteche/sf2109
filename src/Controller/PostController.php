@@ -48,7 +48,10 @@ class PostController extends AbstractController
 
     /**
      * @Route("/show/{id}", requirements={"id": "\d+"})
-     * @Cache(expires="+1 hour", maxage="3600", public=true)
+     * @Cache(
+     *     expires="+1 hour", maxage="3600", public=true,
+     *     lastModified="post.getCreatedAt()"
+     * )
      */
     public function show(Post $post): Response
     {
@@ -63,7 +66,7 @@ class PostController extends AbstractController
         $response->headers->set('Expires', (new \DateTimeImmutable('+2 hour'))->format('c'));
         $response->setExpires(new \DateTimeImmutable('+3 hour'));
         $response->setPublic();
-        $response->headers->addCacheControlDirective('no-store');
+        //$response->headers->addCacheControlDirective('no-store');
 
         return $response;
     }
